@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+  <title>MOVIES</title>
+</head>
+<body>
+
+  <header class="header">
+    <video class="header__video"  autoplay muted loop></video> 
+
+    <nav class="nav">
+      <div class="nav__left">
+        <a href="index.html" class="nav__logo">
+          <img src="img/logo.png" alt="Logo" />
+        </a>
+        <ul class="nav__menu">
+          <li class="nav__menu-item"><a href="#" class="nav__menu-link" data-filter="premier">Премьеры</a></li>
+          <li class="nav__menu-item"><a href="#" class="nav__menu-link" data-filter="series">Сериалы</a></li>
+          <li class="nav__menu-item"><a href="#" class="nav__menu-link" data-filter="movies">Фильмы</a></li>
+          <li class="nav__menu-item"><a href="#" class="nav__menu-link" data-filter="kids">Детям</a></li>
+        </ul>
+      </div>
+
+      <div class="nav__right">
+        <div class="search">
+          <input type="text" placeholder="Поиск..." class="search__input" id="search_input" />
+          <div class="search__results"></div>
+        </div>
+        <img src="img/user.png" alt="User" class="nav__user" />
+      </div>
+
+      <div class="burger">
+        <i class="bi bi-list burger__icon" id="burger-icon"></i>
+      </div>
+    </nav>
+
+    <div class="hero">
+      <h1 class="hero__title" id="title">Бумажный Дом</h1>
+      <p class="hero__desc">
+        Необычная группа грабителей пытается совершить самое идеальное ограбление в истории Испании — украсть 2,4 миллиарда евро из Королевского монетного двора Испании.
+      </p>
+
+      <div class="hero__details">
+        <span class="hero__original">Оригинальный сериал Netflix</span>
+        <span class="hero__genre" id="gen">Боевик, триллер, криминал</span>
+        <span class="hero__year" id="date">2017</span>
+        <div class="hero__rating" id="rate">
+          <span>IMDb</span><i class="bi bi-star-fill"></i> 7.2
+        </div>
+      </div>
+
+      <div class="hero__actions">
+        <a href="money-heist.html" class="hero__watch">
+          Смотреть <i class="bi bi-play-fill"></i>
+        </a>
+      </div>
+    </div>
+
+    <section class="popular">
+      <h4 class="popular__title">Популярные</h4>
+      <i class="bi bi-chevron-left popular__arrow popular__arrow--left"></i>
+      <i class="bi bi-chevron-right popular__arrow popular__arrow--right"></i>
+
+      <div class="popular__cards" id="cards"></div>
+    </section>
+  </header>
+
+  <script src="app.js"></script>
+</body>
+</html>

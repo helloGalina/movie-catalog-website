@@ -1,0 +1,786 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100..900&family=Ysabeau+SC:wght@1..1000&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: #171717;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+/* =================================== */
+/* Блок header */
+/* =================================== */
+.header {
+  position: relative;
+  width: 80%;
+  max-width: 1400px;
+  height: 90vh;
+  min-height: 600px;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 25px -8px #000;
+}
+
+.header__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+
+
+
+.header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: no-repeat center center/cover;
+  opacity: 0.6;
+  z-index: -1;
+}
+
+.header--money-heist::before {
+  background-image: url("img/money-heist1.jpg");
+}
+.header--the-boys::before {
+  background-image: url("img/the-boys1.jpg");
+}
+.header--john-wick::before {
+  background-image: url("img/john-wick1.webp");
+}
+.header--crime-and-punishment::before {
+  background-image: url("img/crime-and-punishment1.webp");
+}
+
+.header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent, #000);
+  z-index: -1;
+}
+
+/* =================================== */
+/* Блок nav */
+/* =================================== */
+.nav {
+  position: relative;
+  z-index: 10;
+  height: 10%;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+}
+
+.nav__left {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.nav__logo img {
+  width: 90px;
+  margin-top: 40px;
+}
+
+.nav__menu {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav__menu-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 12px;
+  transition: opacity 0.3s;
+}
+
+.nav__menu-link:hover {
+  opacity: 0.7;
+}
+
+.nav__right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav__user {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 50px;
+}
+
+/* =================================== */
+/* Блок search */
+/* =================================== */
+search {
+  position: relative;
+  z-index: 1000;
+}
+
+.search__input {
+  padding: 10px 18px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  width: 240px;
+  font-size: 14px;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.search__input::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.search__input:focus {
+  background: rgba(255, 255, 255, 0.35);
+  width: 280px;
+}
+
+.search__results {
+  position: absolute;
+  top: 55px;
+  right: 0;
+  width: 340px;
+  max-height: 70vh;
+  overflow-y: auto;
+  background: rgba(0, 0 0 / 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 10px 0;
+  z-index: 9999;
+}
+
+.search__results--visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.search__results::-webkit-scrollbar {
+  width: 6px;
+}
+.search__results::-webkit-scrollbar-track {
+  background: transparent;
+}
+.search__results::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+.search__results:hover::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.search-card {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.search-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.search-card:hover .search-card:hover::before {
+  opacity: 1;
+}
+
+.search-card img {
+  width: 36px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.search-card__info {
+  margin-left: 14px;
+  flex: 1;
+  min-width: 0;
+}
+
+.search-card__title {
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 240px;
+  display: block;
+}
+
+.search-card__title span {
+  background: yellow;
+  color: #000;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  margin-left: 6px;
+}
+
+.search-card p {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 2px;
+}
+
+/* =================================== */
+/* Блок burger */
+/* =================================== */
+.burger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #fff;
+  z-index: 1000;
+  margin-left: 15px;
+}
+
+/* =================================== */
+/* Блок hero */
+/* =================================== */
+.hero {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  padding-left: 50px;
+  margin-top: 50px;
+}
+
+.hero__title {
+  font-size: 56px;
+  margin-bottom: 16px;
+}
+
+.hero__desc {
+  width: 400px;
+  font-size: 15px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.hero__details {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 12px;
+  margin-bottom: 24px;
+}
+
+.hero__original {
+  opacity: 0.8;
+}
+.hero__genre {
+  color: #8ee630;
+}
+.hero__rating span {
+  background: yellow;
+  color: #000;
+  padding: 2px 6px;
+  margin-right: 6px;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.hero__watch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: linear-gradient(90deg, #cf0101, #a80000);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 16px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  animation: hero-btn 4s linear infinite;
+  background-size: 200% 200%;
+  z-index: 1;
+}
+
+.hero__watch::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transform: skewX(-25deg);
+  animation: shine 3s ease-in-out infinite;
+  z-index: 2;
+}
+
+@keyframes hero-btn {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  60% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.hero__watch:hover {
+  transform: scale(1.05);
+  animation-duration: 2s;
+}
+
+/* =================================== */
+/* Блок popular */
+/* =================================== */
+.popular {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  padding: 0 50px;
+  z-index: 2;
+}
+
+.popular__title {
+  margin-bottom: 12px;
+}
+
+.popular__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+  z-index: 10;
+}
+
+.popular__arrow--left {
+  left: 10px;
+}
+.popular__arrow--right {
+  right: 10px;
+}
+
+.popular:hover .popular__arrow {
+  opacity: 1;
+  pointer-events: auto;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.popular__cards {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 12px;
+  padding: 10px 0;
+}
+
+.popular__cards::-webkit-scrollbar {
+  display: none;
+}
+
+.popular-card {
+  position: relative;
+  flex: 0 0 150px;
+  height: 225px;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: flex 0.5s ease;
+  cursor: pointer;
+}
+
+.popular-card:hover {
+  flex: 0 0 340px;
+  z-index: 10;
+}
+
+.popular-card__poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease, transform 0.6s ease;
+}
+
+.popular-card:hover .popular-card__poster {
+  opacity: 0;
+  z-index: -1;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.popular-card__overlay {
+  background: linear-gradient(180deg, transparent 30%, rgba(0, 0, 0, 0.95));
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.popular-card:hover .popular-card__overlay {
+  opacity: 1;
+}
+
+.popular-card__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transform: scale(1.1);
+  transition: opacity 0.6s ease, transform 0.8s ease;
+  z-index: -1;
+}
+
+.popular-card:hover .popular-card__bg {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.popular-card__info {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.6s ease;
+  z-index: 2;
+}
+
+.popular-card:hover .popular-card__info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.popular-card__info h4 {
+  transition: opacity 0.5s ease 0.1s, transform 0.6s ease 0.1s;
+}
+
+.popular-card__meta,
+.popular-card__desc {
+  transition: opacity 0.5s ease 0.2s, transform 0.6s ease 0.2s;
+}
+
+.popular-card__desc {
+  font-size: 12px;
+  line-height: 1.3;
+  max-height: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.4s;
+}
+
+.popular-card__info h4 {
+  margin-bottom: 6px;
+  font-size: 16px;
+}
+
+.popular-card__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+/* =================================== */
+/* Адаптив */
+/* =================================== */
+
+@media (max-width: 1000px) {
+  .burger {
+    display: block;
+  }
+
+  .nav__menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.97);
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    border-radius: 0 0 16px 16px;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.35s ease;
+    z-index: 999;
+  }
+
+  .nav__menu--active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .nav__menu-item {
+    padding: 16px 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .nav__menu-item:last-child {
+    border-bottom: none;
+  }
+
+  .nav__menu-link {
+    font-size: 16px;
+    font-weight: 600;
+    display: block;
+    transition: color 0.3s ease;
+  }
+
+  .nav__menu-link:hover {
+    color: #8ee630;
+  }
+}
+@media (max-width: 850px) {
+  .burger {
+    display: block;
+  }
+
+  .nav__menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.97);
+    flex-direction: column;
+    padding: 20px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: all 0.4s ease;
+    z-index: 999;
+  }
+
+  .nav__menu--active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav__menu-item {
+    padding: 12px 20px;
+    text-align: center;
+  }
+
+  .nav__menu-link {
+    font-size: 16px;
+    display: block;
+  }
+}
+
+@media (max-width: 750px) {
+  .nav__user {
+    margin-left: 30px;
+  }
+}
+
+@media (max-width: 670px) {
+  body {
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav {
+    padding: 0 16px;
+    min-height: 70px;
+  }
+
+  .nav__logo img {
+    width: 68px;
+    margin-top: 16px;
+  }
+
+  .nav__right {
+    gap: 10px;
+  }
+
+  .nav__user {
+    width: 32px;
+    height: 32px;
+    margin-left: 0 !important;
+  }
+
+  .burger {
+    font-size: 26px;
+    margin-left: 0;
+  }
+
+  .search__input {
+    width: 160px;
+    font-size: 13.5px;
+    padding: 9px 16px;
+  }
+
+  .hero {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 20px;
+  }
+
+  .hero__title {
+    font-size: 38px;
+    line-height: 1.1;
+  }
+
+  .hero__desc {
+    font-size: 14.5px;
+    width: 100%;
+    max-width: 420px;
+    line-height: 1.5;
+  }
+
+  .hero__details {
+    font-size: 13px;
+    gap: 10px;
+  }
+
+  .hero__watch {
+    padding: 12px 24px;
+    font-size: 15px;
+  }
+
+  .popular__title {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .popular__cards {
+    gap: 10px;
+  }
+
+  .popular-card {
+    flex: 0 0 140px;
+    height: 210px;
+  }
+
+  .popular-card:hover {
+    flex: 0 0 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .burger {
+    display: none !important;
+  }
+
+  .nav__user {
+    width: 42px;
+    height: 42px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1001;
+  }
+
+  .nav__user:hover,
+  .nav__user--menu-active {
+    border-color: #8ee630;
+    box-shadow: 0 0 15px rgba(142, 230, 48, 0.5);
+  }
+
+  .nav__user::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 5px;
+    background: #8ee630;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .nav__user--menu-active::after {
+    opacity: 1;
+  }
+}
