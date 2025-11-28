@@ -1,18 +1,14 @@
-// Элементы управления каруселью
 const leftBtn = document.querySelector(".popular__arrow--left");
 const rightBtn = document.querySelector(".popular__arrow--right");
 const cardsContainer = document.querySelector(".popular__cards");
 
-// Поиск
 const searchInput = document.getElementById("search_input");
 const searchResults = document.querySelector(".search__results");
 
-// Бургер-меню и аватарка
 const burgerIcon = document.getElementById("burger-icon");
 const userAvatar = document.querySelector(".nav__user");
 const navMenu = document.querySelector(".nav__menu");
 
-// Видео-фон
 const headerVideo = document.querySelector(".header__video");
 
 const json_url = "movie.json";
@@ -68,13 +64,12 @@ fetch(json_url)
     }
 
 // ============================
-// СМЕНА ВИДЕО + ТЕКСТА ПРИ ХОВЕРЕ НА КАРТОЧКУ (Netflix-эффект)
+// СМЕНА ВИДЕО + ТЕКСТА ПРИ ХОВЕРЕ НА КАРТОЧКУ
 // ============================
 if (headerVideo && data.length > 0) {
   const defaultMovie = data[0];
   const defaultTrailer = defaultMovie.trailer;
 
-  // Устанавливаем начальные значения (главный фильм)
   const updateHero = (movie) => {
     document.getElementById("title").textContent = movie.name;
     document.getElementById("gen").textContent = movie.genre;
@@ -83,10 +78,8 @@ if (headerVideo && data.length > 0) {
     document.querySelector(".hero__desc").textContent = movie.description;
     document.querySelector(".hero__watch").href = movie.url;
 
-    // Меняем класс фона (для ::before с картинкой)
     header.className = `header header--${movie.bg || "money-heist"}`;
 
-    // Меняем видео
     if (headerVideo.src !== movie.trailer) {
       headerVideo.classList.add("header__video--fading");
       setTimeout(() => {
@@ -97,14 +90,12 @@ if (headerVideo && data.length > 0) {
     }
   };
 
-  // Инициализация — главный фильм
   updateHero(defaultMovie);
   if (defaultTrailer) {
     headerVideo.src = defaultTrailer;
     headerVideo.play().catch(() => {});
   }
 
-  // При наведении на карточку
   document.querySelectorAll(".popular-card").forEach((card) => {
     const cardTitle = card.querySelector("h4")?.textContent.trim();
     const movieData = data.find((m) => m.name === cardTitle);
@@ -116,11 +107,10 @@ if (headerVideo && data.length > 0) {
     });
 
     card.addEventListener("mouseleave", () => {
-      updateHero(defaultMovie); // возврат к главному
+      updateHero(defaultMovie);
     });
   });
 
-  // При уходе с карусели — тоже возврат
   document.querySelector(".popular").addEventListener("mouseleave", () => {
     updateHero(defaultMovie);
   });
@@ -212,13 +202,11 @@ function toggleMenu() {
   }
 }
 
-// Клик по бургеру
 burgerIcon?.addEventListener("click", (e) => {
   e.stopPropagation();
   toggleMenu();
 });
 
-// Клик по аватарке на маленьких экранах
 userAvatar?.addEventListener("click", (e) => {
   if (window.innerWidth <= 480) {
     e.stopPropagation();
@@ -226,7 +214,6 @@ userAvatar?.addEventListener("click", (e) => {
   }
 });
 
-// Закрытие по клику на пункт меню
 document.querySelectorAll(".nav__menu-link").forEach((link) => {
   link.addEventListener("click", () => {
     navMenu.classList.remove("nav__menu--active");
@@ -240,7 +227,6 @@ document.querySelectorAll(".nav__menu-link").forEach((link) => {
   });
 });
 
-// Закрытие при клике вне меню
 document.addEventListener("click", (e) => {
   if (
     !e.target.closest(".nav__menu") &&

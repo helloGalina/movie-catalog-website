@@ -9,24 +9,23 @@
 }
 
 body {
-  min-height: 100vh;
-  background: #171717;
+margin: 0;
+  padding: 0;
+  background: #000;
   font-family: "Roboto", sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: #fff;
+  overflow: hidden;
 }
 
 /* =================================== */
 /* Блок header */
 /* =================================== */
 .header {
-  position: fixed;          
+position: fixed;         
   inset: 0;                 
   width: 100vw;
   height: 100vh;
-  border: none !important;   
+  border: none !important; 
   border-radius: 0 !important;
   box-shadow: none !important;
   overflow: hidden;
@@ -293,7 +292,7 @@ search {
   z-index: 2;
   max-width: 600px;
   padding-left: 50px;
-  margin-top: 80px;
+  margin-top: 50px;
 }
 
 .hero__title {
@@ -666,9 +665,14 @@ search {
     margin: 0;
   }
 
-  .nav {
-    padding: 0 16px;
-    min-height: 70px;
+ .nav,
+  .hero,
+  .popular {
+    padding: 0 20px;
+  }
+  
+  .hero {
+    margin-top: 60px;
   }
 
   .nav__logo img {
