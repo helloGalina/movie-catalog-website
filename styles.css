@@ -17,14 +17,12 @@ body {
   overflow-y: auto;
 }
 
-/* =================================== */
-/* Блок header */
-/* =================================== */
 .header {
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
+ position: relative;
+  width: 100%;
+  min-height: 100%;
   overflow: hidden;
+  background: #000;
   z-index: 1;
 }
 
@@ -159,12 +157,12 @@ body {
 }
 
 .coming-soon__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+display: flex;
   gap: 30px;
-  max-width: 1400px;
-  margin: 0 auto;
-  justify-content: center;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 12px;
+  scrollbar-width: none;
 }
 
 .coming-soon__item {
@@ -304,9 +302,6 @@ body {
   transform: translateY(-5px) scale(1.1);
 }
 
-/* =================================== */
-/* Блок nav */
-/* =================================== */
 .nav {
   position: relative;
   z-index: 10;
@@ -363,9 +358,6 @@ body {
   margin-left: 50px;
 }
 
-/* =================================== */
-/* Блок search */
-/* =================================== */
 .search {
   position: relative;
   z-index: 1000;
@@ -501,9 +493,6 @@ body {
   margin-top: 2px;
 }
 
-/* =================================== */
-/* Блок burger */
-/* =================================== */
 .burger {
   display: none;
   font-size: 28px;
@@ -513,9 +502,6 @@ body {
   margin-left: 15px;
 }
 
-/* =================================== */
-/* Блок hero */
-/* =================================== */
 .hero {
   position: relative;
   z-index: 2;
@@ -627,17 +613,23 @@ body {
 }
 
 .popular {
-  position: absolute;
-  bottom: 30px;
-  left: 0;
-  right: 0;
-  padding: 0 50px;
-  z-index: 2;
+  padding: 80px 50px 40px;
+  position: relative;
+  background: #000;
+  z-index: 1;
 }
 
 .popular__title {
   font-size: 24px;
   margin-bottom: 12px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.popular__container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
 }
 
 .popular__arrow {
@@ -654,21 +646,24 @@ body {
   cursor: pointer;
   opacity: 0;
   pointer-events: none;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
   z-index: 10;
+  font-size: 18px;
+  color: #fff;
 }
 
-.popular__arrow--left {
-  left: 10px;
-}
-.popular__arrow--right {
-  right: 10px;
-}
+.popular__arrow--left { left: 10px; }
+.popular__arrow--right { right: 10px; }
 
-.popular:hover .popular__arrow {
+.popular__container:hover .popular__arrow {
   opacity: 1;
   pointer-events: auto;
   background: rgba(255, 255, 255, 0.4);
+}
+
+.popular__arrow:hover {
+  background: rgba(255, 255, 255, 0.55);
+  transform: translateY(-50%) scale(1.1);
 }
 
 .popular__cards {
@@ -677,6 +672,7 @@ body {
   scroll-behavior: smooth;
   gap: 12px;
   padding: 10px 0;
+  scrollbar-width: none;
 }
 
 .popular__cards::-webkit-scrollbar {
@@ -716,9 +712,12 @@ body {
 }
 
 .popular-card__overlay {
+  position: absolute;
+  inset: 0;
   background: linear-gradient(180deg, transparent 30%, rgba(0, 0, 0, 0.95));
   opacity: 0;
   transition: opacity 0.6s ease;
+  pointer-events: none;
 }
 
 .popular-card:hover .popular-card__overlay {
@@ -743,6 +742,7 @@ body {
   transform: scale(1.05);
 }
 
+/* Информация */
 .popular-card__info {
   position: absolute;
   bottom: 20px;
@@ -761,12 +761,10 @@ body {
 }
 
 .popular-card__info h4 {
+  margin-bottom: 6px;
+  font-size: 16px;
+  font-weight: 700;
   transition: opacity 0.5s ease 0.1s, transform 0.6s ease 0.1s;
-}
-
-.popular-card__meta,
-.popular-card__desc {
-  transition: opacity 0.5s ease 0.2s, transform 0.6s ease 0.2s;
 }
 
 .popular-card__desc {
@@ -775,12 +773,8 @@ body {
   max-height: 60px;
   overflow: hidden;
   text-overflow: ellipsis;
-  transition: all 0.4s;
-}
-
-.popular-card__info h4 {
-  margin-bottom: 6px;
-  font-size: 16px;
+  opacity: 0.9;
+  transition: opacity 0.5s ease 0.2s, transform 0.6s ease 0.2s;
 }
 
 .popular-card__meta {
@@ -789,6 +783,8 @@ body {
   align-items: center;
   font-size: 12px;
   opacity: 0.9;
+  margin-top: 8px;
+  transition: opacity 0.5s ease 0.2s;
 }
 
 /* =================================== */
@@ -805,7 +801,7 @@ body {
     top: 100%;
     left: 0;
     right: 0;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     flex-direction: column;
@@ -848,14 +844,6 @@ body {
     color: #8ee630;
   }
 
-  .coming-soon__item-title {
-    font-size: 16px;
-    line-height: 1.2;
-  }
-
-  .coming-soon__item-desc {
-    font-size: 12px;
-  }
 
   .coming-soon__grid {
     display: flex;
@@ -875,9 +863,19 @@ body {
     height: 420px;
     scroll-snap-align: start;
   }
+
+  .coming-soon__item-title {
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  .coming-soon__item-desc {
+    font-size: 12px;
+  }
 }
 
 @media (max-width: 768px) {
+
   .nav,
   .hero,
   .popular,
@@ -907,7 +905,7 @@ body {
     font-size: 14.5px;
     width: 100%;
     max-width: 420px;
-  } /* ← ЗАКРЫТА СКОБКА! */
+  }
 
   .popular__title,
   .row__title,
@@ -917,68 +915,44 @@ body {
 
   .popular-card,
   .row .popular-card {
-    /* flex: 0 0 160px !important; */
+    flex: 0 0 160px;
     height: 240px;
-    transition: transform 0.3s ease;
-  }
-
-  .coming-soon__item {
-    flex: 0 0 150px;
   }
 
   .popular-card:hover,
   .row .popular-card:hover {
-    transform: scale(1.05);
-    z-index: 10;
-    box-shadow: 0 10px 30px rgba(142, 230, 48, 0.2);
+    flex: 0 0 300px;
+    transform: translateY(-10px);
   }
-
-  /* .popular-card:hover {
-    flex: 0 0 160px !important;
-  } */
 
   .popular__arrow,
   .row__arrow {
-    opacity: 0.8;
+    opacity: 0.9;
     pointer-events: auto;
     width: 40px;
     height: 40px;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(10px);
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .popular__arrow--left,
   .row__arrow--left {
-    left: 5px;
+    left: 8px;
   }
 
   .popular__arrow--right,
   .row__arrow--right {
-    right: 5px;
-  }
-
-  .coming-soon__grid {
-    display: flex;
-    overflow-x: auto;
-    gap: 16px;
-    padding-bottom: 10px;
-    scroll-snap-type: x mandatory;
-  }
-
-  .coming-soon__grid::-webkit-scrollbar {
-    display: none;
+    right: 8px;
   }
 
   .coming-soon__item {
     flex: 0 0 280px;
     height: 420px;
-    scroll-snap-align: start;
   }
 
   .coming-soon__overlay {
     padding: 24px;
-    gap: 10px;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.95) 0%, transparent 60%);
   }
 
@@ -988,8 +962,7 @@ body {
   }
 
   .coming-soon__item-title {
-    font-size: 14px;
-    line-height: 1.2;
+    font-size: 15px;
   }
 
   .header__video {
@@ -997,22 +970,11 @@ body {
   }
 
   .header::before {
-    opacity: 0.8;
+    opacity: 0.85;
   }
 }
 
 @media (max-width: 670px) {
-  body {
-    padding: 0;
-    margin: 0;
-  }
-
-  .nav,
-  .hero,
-  .popular {
-    padding: 0 20px;
-  }
-
   .hero {
     margin-top: 60px;
   }
@@ -1029,7 +991,7 @@ body {
   .nav__user {
     width: 32px;
     height: 32px;
-    margin-left: 0 !important;
+    margin-left: 0;
   }
 
   .burger {
@@ -1044,15 +1006,7 @@ body {
   }
 
   .hero__title {
-    font-size: 38px;
-    line-height: 1.1;
-  }
-
-  .hero__desc {
-    font-size: 14.5px;
-    width: 100%;
-    max-width: 420px;
-    line-height: 1.5;
+    font-size: 36px;
   }
 
   .hero__details {
@@ -1063,20 +1017,6 @@ body {
   .hero__watch {
     padding: 12px 24px;
     font-size: 15px;
-  }
-
-  .popular__title {
-    font-size: 18px;
-    margin-bottom: 16px;
-  }
-
-  .popular-card {
-    flex: 0 0 140px;
-    height: 210px;
-  }
-
-  .popular-card:hover {
-    flex: 0 0 300px;
   }
 }
 
@@ -1102,22 +1042,26 @@ body {
     box-shadow: 0 0 15px rgba(142, 230, 48, 0.5);
   }
 
-  .nav__user::after {
+  .nav__user--menu-active::after {
     content: "";
     position: absolute;
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 5px;
-    height: 5px;
+    width: 6px;
+    height: 6px;
     background: #8ee630;
     border-radius: 50%;
-    opacity: 0;
-    transition: opacity 0.3s;
+    opacity: 1;
   }
 
-  .nav__user--menu-active::after {
-    opacity: 1;
+  .popular-card {
+    flex: 0 0 135px;
+    height: 200px;
+  }
+
+  .popular-card:hover {
+    flex: 0 0 270px;
   }
 
   .footer__content {

@@ -1,91 +1,184 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
-  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
-  <title>Пацаны | MOVIES</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="page-title">Пацаны | MOVIES</title>
 
-  <header class="header header--the-boys">
-    <nav class="nav">
-      <div class="nav__left">
-        <a href="index.html" class="nav__logo">
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+
+    <header class="header" id="movie-header">
+      <video class="header__video" autoplay muted loop playsinline></video>
+
+      <nav class="nav">
+        <div class="nav__left">
+          <a href="index.html" class="nav__logo">
+            <img src="img/logo.png" alt="MOVIES" />
+          </a>
+          <ul class="nav__menu">
+            <li class="nav__menu-item"><a href="#" class="nav__menu-link" data-filter="premier">Премьеры</a></li>
+            <li class="nav__menu-item"><a href="#" class="nav__menu-link" data-filter="series">Сериалы</a></li>
+            <li class="nav__menu-item"><a href="#" class="nav__menu-link" data-filter="movies">Фильмы</a></li>
+            <li class="nav__menu-item"><a href="#" class="nav__menu-link" data-filter="kids">Детям</a></li>
+          </ul>
+        </div>
+
+        <div class="nav__right">
+          <div class="search">
+            <input type="text" placeholder="Поиск..." class="search__input" id="search_input" />
+            <div class="search__results" id="search_results"></div>
+          </div>
+          <img src="img/user.png" alt="Профиль" class="nav__user" />
+        </div>
+
+        <div class="burger">
+          <i class="bi bi-list burger__icon" id="burger-icon"></i>
+        </div>
+      </nav>
+
+      <div class="hero">
+        <h1 class="hero__title" id="title">Загрузка...</h1>
+        <p class="hero__desc" id="description">Описание загружается...</p>
+
+        <div class="hero__details">
+          <span class="hero__genre" id="gen">Жанр</span>
+          <span class="hero__year" id="date">Год</span>
+          <div class="hero__rating" id="rate">
+            <span>IMDb</span><i class="bi bi-star-fill"></i> 0.0
+          </div>
+        </div>
+
+        <div class="hero__actions">
+          <a href="#" class="hero__watch" id="play-btn" target="_blank" rel="noopener">
+            Смотреть трейлер <i class="bi bi-play-fill"></i>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="popular">
+        <h2 class="popular__title">Похожие</h2>
+        <div class="popular__container">
+          <i class="bi bi-chevron-left popular__arrow popular__arrow--left"></i>
+          <i class="bi bi-chevron-right popular__arrow popular__arrow--right"></i>
+          <div class="popular__cards" id="cards"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__content">
+        <div class="footer__logo">
           <img src="img/logo.png" alt="MOVIES" />
-        </a>
-        <ul class="nav__menu">
-          <li class="nav__menu-item"><a href="#" class="nav__menu-link" data-filter="premier">Премьеры</a></li>
-          <li class="nav__menu-item"><a href="#" class="nav__menu-link" data-filter="series">Сериалы</a></li>
-          <li class="nav__menu-item"><a href="#" class="nav__menu-link" data-filter="movies">Фильмы</a></li>
-          <li class="nav__menu-item"><a href="#" class="nav__menu-link" data-filter="kids">Детям</a></li>
-        </ul>
-      </div>
-
-      <div class="nav__right">
-        <div class="search">
-          <input type="text" placeholder="Поиск..." class="search__input" id="search_input" />
-          <div class="search__results"></div>
+          <p>© 2025 ООО «Мувис».<br />Все права защищены. 18+</p>
         </div>
-        <img src="img/user.png" alt="Профиль" class="nav__user" />
-      </div>
 
-      <div class="burger">
-        <i class="bi bi-list burger__icon" id="burger-icon"></i>
-      </div>
-    </nav>
+        <div class="footer__column">
+          <h4 class="footer__title">Каталог</h4>
+          <ul>
+            <li><a href="#">Премьеры</a></li>
+            <li><a href="#">Сериалы</a></li>
+            <li><a href="#">Фильмы</a></li>
+            <li><a href="#">Детям</a></li>
+          </ul>
+        </div>
 
-    <div class="hero">
-      <h1 class="hero__title" id="title">Пацаны | MOVIE</h1>
-      <p class="hero__desc" id="description">
-        В мире, где супергерои являются звёздами и корпорациями, их истинная сущность далека от идеала. Команда «Пацаны» ведёт тайную борьбу против всесильных и развращённых героев.
-      </p>
+        <div class="footer__column">
+          <h4 class="footer__title">Сервис</h4>
+          <ul>
+            <li><a href="#">Подписка</a></li>
+            <li><a href="#">Тарифы</a></li>
+            <li><a href="#">Подарочные карты</a></li>
+            <li><a href="#">Помощь</a></li>
+          </ul>
+        </div>
 
-      <div class="hero__details">
-        <span class="hero__genre" id="gen">Боевик</span>
-        <span class="hero__year" id="date">2022</span>
-        <div class="hero__rating" id="rate">
-          <span>IMDb</span><i class="bi bi-star-fill"></i> 9.3
+        <div class="footer__column">
+          <h4 class="footer__title">Мы в соцсетях</h4>
+          <div class="footer__social">
+            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          </div>
         </div>
       </div>
-
-      <div class="hero__actions">
-        <a href="#" class="hero__watch" id="play" target="_blank" rel="noopener">
-          Смотреть <i class="bi bi-play-fill"></i>
-        </a>
-      </div>
-    </div>
-
-    <section class="popular">
-      <h4 class="popular__title">Похожие</h4>
-      <i class="bi bi-chevron-left popular__arrow popular__arrow--left"></i>
-      <i class="bi bi-chevron-right popular__arrow popular__arrow--right"></i>
-      <div class="popular__cards" id="cards"></div>
-    </section>
-  </header>
+    </footer>
 
     <script src="app.js"></script>
+
     <script>
-        fetch(json_url).then((Response) => Response.json())
+      const movieName = "Пацаны";
+
+      fetch(json_url)
+        .then(res => res.json())
         .then(data => {
-            let movies_array = data.filter((ele) => {
-        return ele.name === "Пацаны";
-      });
-    document.getElementById("title").innerText = movies_array[0].name;
-        document.getElementsByTagName("video")[0].setAttribute('src', movies_array[0].trailer)
-        document.getElementsByTagName("video")[0].play();
-    document.getElementById("play").href = movies_array[0].trailer;
+          const movie = data.find(m => m.name === movieName);
 
+          if (!movie) {
+            document.body.innerHTML =
+              "<h1 style='color:white;text-align:center;margin-top:100px'>Фильм не найден</h1>";
+            return;
+          }
 
+          document.getElementById("title").textContent = movie.name;
+          document.getElementById("page-title").textContent = movie.name + " | MOVIES";
+          document.getElementById("description").textContent = movie.description;
+          document.getElementById("gen").textContent = movie.genre;
+          document.getElementById("date").textContent = movie.date;
+          document.getElementById(
+            "rate"
+          ).innerHTML = `<span>IMDb</span><i class="bi bi-star-fill"></i> ${movie.imdb}`;
 
-    document.getElementById("gen").innerText = movies_array[0].genre;
-    document.getElementById("date").innerText = movies_array[0].date;
-    document.getElementById("rate").innerHTML = `
-      <span>IMDb</span><i class="bi bi-star-fill"></i> ${movies_array[0].imdb}
-    `;
-        })
+          const video = document.querySelector(".header__video");
+          video.src = movie.trailer;
+          video.play().catch(() => {});
+
+          document.getElementById("play-btn").href = movie.trailer;
+
+          document
+            .getElementById("movie-header")
+            .classList.add(`header--${movie.id || "default"}`);
+
+          const similar = data
+            .filter(
+              (m) =>
+                m.genre.includes(movie.genre.split(",")[0]) &&
+                m.name !== movie.name
+            )
+            .slice(0, 15);
+
+          const similarCards = document.getElementById("similar-cards");
+          similarCards.innerHTML = similar
+            .map(
+              (item) => `
+            <a href="movie.html?title=${encodeURIComponent(
+              item.name
+            )}" class="popular-card">
+              <img src="${item.poster}" class="popular-card__poster" alt="${
+                item.name
+              }">
+              <img src="${item.poster}" class="popular-card__bg" alt="">
+              <div class="popular-card__info">
+                <h4>${item.name}</h4>
+                <div class="popular-card__meta">
+                  <span>${item.date}</span>
+                  <span>IMDb ${item.imdb}</span>
+                </div>
+              </div>
+            </a>
+          `
+            )
+            .join("");
+        });
     </script>
   </body>
 </html>

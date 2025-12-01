@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MOVIES</title>
+    <title>MOVIES – Смотрите фильмы и сериалы онлайн</title>
     <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet"
@@ -12,8 +12,9 @@
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
   </head>
   <body>
+
     <header class="header">
-      <video class="header__video" autoplay muted loop></video>
+      <video class="header__video" autoplay muted loop playsinline></video>
 
       <nav class="nav">
         <div class="nav__left">
@@ -22,14 +23,10 @@
           </a>
           <ul class="nav__menu">
             <li class="nav__menu-item">
-              <a href="#" class="nav__menu-link" data-filter="premier"
-                >Премьеры</a
-              >
+              <a href="#" class="nav__menu-link" data-filter="premier">Премьеры</a>
             </li>
             <li class="nav__menu-item">
-              <a href="#" class="nav__menu-link" data-filter="series"
-                >Сериалы</a
-              >
+              <a href="#" class="nav__menu-link" data-filter="series">Сериалы</a>
             </li>
             <li class="nav__menu-item">
               <a href="#" class="nav__menu-link" data-filter="movies">Фильмы</a>
@@ -50,7 +47,7 @@
             />
             <div class="search__results" id="search_results"></div>
           </div>
-          <img src="img/user.png" alt="User" class="nav__user" />
+          <img src="img/user.png" alt="Профиль" class="nav__user" />
         </div>
 
         <div class="burger">
@@ -63,7 +60,7 @@
         <p class="hero__desc" id="desc">
           Необычная группа грабителей пытается совершить самое идеальное
           ограбление в истории Испании — украсть 2,4 миллиарда евро из
-          Королевского монетного двора Испании.
+          Королевского монетного двора.
         </p>
 
         <div class="hero__details">
@@ -71,7 +68,7 @@
           <span class="hero__genre" id="gen">Боевик, триллер, криминал</span>
           <span class="hero__year" id="date">2017</span>
           <div class="hero__rating" id="rate">
-            <span>IMDb</span><i class="bi bi-star-fill"></i> 7.2
+            <span>IMDb</span><i class="bi bi-star-fill"></i> 8.2
           </div>
         </div>
 
@@ -79,16 +76,19 @@
           Смотреть <i class="bi bi-play-fill"></i>
         </a>
       </div>
-
-      <section class="popular">
-        <h4 class="popular__title">Популярные</h4>
-        <i class="bi bi-chevron-left popular__arrow popular__arrow--left"></i>
-        <i class="bi bi-chevron-right popular__arrow popular__arrow--right"></i>
-        <div class="popular__cards" id="cards"></div>
-      </section>
     </header>
 
     <main class="main">
+      <section class="popular">
+        <h2 class="popular__title">Популярные</h2>
+        
+        <div class="popular__container">
+          <i class="bi bi-chevron-left popular__arrow popular__arrow--left"></i>
+          <i class="bi bi-chevron-right popular__arrow popular__arrow--right"></i>
+          <div class="popular__cards" id="cards"></div>
+        </div>
+      </section>
+
       <section class="row">
         <h2 class="row__title">Посмотреть на выходных</h2>
         <i class="bi bi-chevron-left row__arrow row__arrow--left"></i>
@@ -103,7 +103,6 @@
         <div class="row__cards" id="top10-row"></div>
       </section>
 
-      <!-- Скоро на MOVIES — только 3 карточки из JSON -->
       <section class="coming-soon">
         <h2 class="coming-soon__title">Скоро на MOVIES</h2>
         <div class="coming-soon__grid" id="coming-soon-grid"></div>
@@ -140,9 +139,9 @@
         <div class="footer__column">
           <h4 class="footer__title">Мы в соцсетях</h4>
           <div class="footer__social">
-            <a href="#"><i class="bi bi-instagram"></i></a>
-            <a href="#"><i class="bi bi-telegram"></i></a>
-            <a href="#"><i class="bi bi-youtube"></i></a>
+            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
           </div>
         </div>
       </div>
